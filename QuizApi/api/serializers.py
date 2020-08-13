@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import QuizCategories, Quiz, Options, Questions, QuizSubCategories
+from .models import QuizCategories, Quiz, Options, Questions, QuizSubCategories, Result
 
 class QuizCategoriesSerializer(serializers.ModelSerializer):
     class Meta:
@@ -28,6 +28,27 @@ class QuizSerializer(serializers.ModelSerializer):
         model = Quiz
         fields = ("id","title","time","scheduleDate","quizCategory", "questions")
 
+class resultOptionsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Options
+        fields = ("id","option")
 
+class resultQuestionsSerializer(serializers.ModelSerializer):
+    roptions = resultOptionsSerializer(many=True,read_only=True)
+    class Meta:
+        model = Questions
+        fields = ("id","question","roptions")
 
-        
+class resultQuizSerializer(serializers.ModelSerializer):
+    rquestions = resultQuestionsSerializer(many=True,read_only=True)
+    class Meta:
+        model = Quiz
+        fields = ("id","title","rquestions")
+
+class ResultSerializer(serializers.ModelSerializer):
+    quizId = resultQuizSerializer(read_only=False)
+    optionId = resultOptionsSerializer(read_only=False)
+    queId = resultQuestionsSerializer(read_only=False)
+    class Meta:
+        model = Result
+        fields = ("id","quizId","queId","optionId")
