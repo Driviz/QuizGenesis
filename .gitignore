@@ -1,5 +1,5 @@
+QuizApi/db.sqlite3
 secret.txt
-db.sqlite3
 venv/
 __pycache__/
 migrations/
