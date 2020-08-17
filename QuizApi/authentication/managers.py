@@ -38,8 +38,8 @@ class UserManager(BaseUserManager):
 
     def is_superuser_eligible(self, **extra_fields):
         if extra_fields.get('is_staff') is not True:
-            raise TypeError(('Superuser must have is_staff=True.'))
+            raise TypeError('Superuser must have is_staff=True.')
         if extra_fields.get('is_teacher') is not True:
-            raise TypeError(('Superuser must have is_staff=True.'))
+            raise TypeError('Superuser must have is_staff=True.')
         if extra_fields.get('is_superuser') is not True:
-            raise TypeError(('Superuser must have is_superuser=True.'))
+            raise TypeError('Superuser must have is_superuser=True.')

@@ -101,6 +101,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'EXCEPTION_HANDLER': 'quizapi.exceptions.core_exception_handler',
+    'NON_FIELD_ERRORS_KEY': 'error',
+}
+
 AUTH_USER_MODEL = 'authentication.User'
 
 # Internationalization
