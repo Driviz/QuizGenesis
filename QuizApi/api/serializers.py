@@ -1,12 +1,5 @@
 from rest_framework import serializers
-from .models import QuizCategories, Quiz, Options, Questions, QuizSubCategories, User
-
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-
-    class Meta:
-        model = User
-        fields = ('id','first_name', 'last_name', 'email', 'username', 'password', 'is_active', 'is_superuser', 'is_staff', 'is_teacher')
-        # extra_kwargs = {'password': {'write_only': True}}
+from .models import QuizCategories, Quiz, Options, Questions, QuizSubCategories
 
 class QuizCategoriesSerializer(serializers.ModelSerializer):
     class Meta:

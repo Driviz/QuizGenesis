@@ -1,21 +1,7 @@
 from django.db import models
 from django.utils.timezone import now
-from django.contrib.auth.models import AbstractUser
-from .managers import UserManager
-from django.conf import settings
 
 # Create your models here.
-
-class User(AbstractUser):
-    username = models.CharField(max_length=255, unique=True)
-    email = models.EmailField(unique=True)
-    is_teacher = models.BooleanField(default=False)
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
-    objects = UserManager()
-    def __str__(self):
-        return self.username
-
 # Quiz Related Models such as Categories, QuizSubCategories, Questions, Quiz and Option can be found below
 class QuizCategories(models.Model):
     title = models.CharField(max_length=255, null=False)
