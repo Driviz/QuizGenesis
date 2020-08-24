@@ -35,3 +35,6 @@ class ResultsView(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     queryset = Results.objects.all()
     serializer_class = ResultsSerializer
+
+# getResult/<userid>/<quizid>/<question>
+# getResult/<quizid>/

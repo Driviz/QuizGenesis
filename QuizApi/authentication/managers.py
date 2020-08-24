@@ -6,8 +6,8 @@ class UserManager(BaseUserManager):
             raise ValueError('The given username must be set')
         if not email:
             raise ValueError('The given email must be set')
-        if extra_fields.get('is_superuser') is True:
-            self.is_superuser_eligible(**extra_fields)
+        # if extra_fields.get('is_superuser') is True:
+        #     self.is_superuser_eligible(**extra_fields)
 
         email = self.normalize_email(email)
         username = self.model.normalize_username(username)
