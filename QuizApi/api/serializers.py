@@ -32,7 +32,7 @@ class ResultsSerializer(serializers.ModelSerializer):
     # questions = QuestionsSerializer(many=True, read_only=True)
     class Meta:
         model = Results
-        fields = ('id','userid','quizid','questionid','optionid', 'questions')
+        fields = ('id','userid','quizid','questionid','optionid')
 
 
 
