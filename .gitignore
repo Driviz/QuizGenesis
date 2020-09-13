@@ -1,0 +1,5 @@
+QuizApi/db.sqlite3
+secret.txt
+venv/
+__pycache__/
+migrations/

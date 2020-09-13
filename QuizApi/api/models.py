@@ -1,8 +1,8 @@
 from django.db import models
 from django.utils.timezone import now
+from authentication.models import User
+
 # Create your models here.
-
-
 # Quiz Related Models such as Categories, QuizSubCategories, Questions, Quiz and Option can be found below
 class QuizCategories(models.Model):
     title = models.CharField(max_length=255, null=False)
@@ -45,4 +45,13 @@ class Options(models.Model):
         verbose_name_plural = "Options"
     def __str__(self):
         return self.option
-    
+
+class Results(models.Model):
+    userid = models.ForeignKey(User, on_delete=models.CASCADE)
+    quizid = models.ForeignKey(Quiz, on_delete=models.CASCADE)
+    questionid = models.ForeignKey(Questions, on_delete=models.CASCADE)
+    optionid = models.ForeignKey(Options, on_delete=models.CASCADE)
+    # question = models.ForeignKey(Questions, related_name='results', on_delete=models.CASCADE)
+    class Meta:
+        verbose_name_plural = "Results"
+        unique_together = ('userid', 'quizid', 'questionid')
